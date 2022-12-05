@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,7 +9,7 @@ using TMPro;
 //[DefaultExecutionOrder(1000)]
 public class MenuUIHandler : MonoBehaviour
 {
-    public TextMeshProUGUI playerName;
+    public TextMeshProUGUI playerNameText;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +27,7 @@ public class MenuUIHandler : MonoBehaviour
     {
         SceneManager.LoadScene(1);
 
-        Debug.Log(playerName.text);
+        // kada pokreneš igru zapiši ime igrača u varijablu playerName
+        MenuManager.Instance.playerName = playerNameText.text;
     }
 }

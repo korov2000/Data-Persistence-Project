@@ -6,6 +6,9 @@ public class MenuManager : MonoBehaviour
 {
     public static MenuManager Instance;
 
+    // varijabla za ulovit ime igrača - puni se u MenuUIHandler.cs
+    public string playerName;
+
     private void Awake()
     {
         if (Instance != null)
@@ -18,10 +21,6 @@ public class MenuManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    // napiši metodu koja će u varijablu strpati ima igrača
-    // pozivaj je iz Awake() metode
-    // metoda mora mora zapisati ime u varijablu kada se klikne na Start Game button
-
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +30,6 @@ public class MenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
