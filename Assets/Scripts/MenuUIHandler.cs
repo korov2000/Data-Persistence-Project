@@ -26,5 +26,7 @@ public class MenuUIHandler : MonoBehaviour
     public void StartNew()
     {
         SceneManager.LoadScene(1);
+
+        Debug.Log(playerName.text);
     }
 }
