@@ -19,6 +19,8 @@ public class MainManager : MonoBehaviour
     
     private bool m_GameOver = false;
 
+    private string newPlayerName;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +39,13 @@ public class MainManager : MonoBehaviour
             }
         }
 
-        bestScoreText.text = $"Best Score : {MenuManager.Instance.playerName} : 0";
+        newPlayerName = MenuManager.Instance.playerName;
+
+        // pozovi funkciju Load() koja će učitati playerName i bestScore
+        MenuManager.Instance.Load();
+
+        // ispiši playerName i bestScore
+        bestScoreText.text = $"Best Score : {MenuManager.Instance.playerName} : {MenuManager.Instance.bestScore}";
     }
 
     private void Update()
@@ -74,5 +82,13 @@ public class MainManager : MonoBehaviour
     {
         m_GameOver = true;
         GameOverText.SetActive(true);
+
+        // ako je sadašnji best score veći od prethodnog pozovi funkciju Save()
+        if (m_Points > MenuManager.Instance.bestScore)
+        {
+            MenuManager.Instance.bestScore = m_Points;
+            MenuManager.Instance.playerName = newPlayerName;
+            MenuManager.Instance.Save();
+        }
     }
 }

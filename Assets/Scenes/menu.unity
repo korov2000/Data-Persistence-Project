@@ -647,6 +647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: 
+  bestScore: 0
 --- !u!1 &1148174954
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class MenuManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class MenuManager : MonoBehaviour
 
     // varijabla za ulovit ime igrača - puni se u MenuUIHandler.cs
     public string playerName;
+    public int bestScore;
 
     private void Awake()
     {
@@ -31,5 +33,35 @@ public class MenuManager : MonoBehaviour
     void Update()
     {
 
+    }
+
+    [System.Serializable] class SaveData
+    {
+        public string saveName;
+        public int saveScore;
+    }
+
+    public void Save()
+    {
+        SaveData data = new SaveData();
+        data.saveName = playerName;
+        data.saveScore = bestScore;
+
+        string json = JsonUtility.ToJson(data);
+
+        File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
+    }
+
+    public void Load()
+    {
+        string path = Application.persistentDataPath + "/savefile.json";
+        if (File.Exists(path))
+        {
+            string json = File.ReadAllText(path);
+            SaveData data = JsonUtility.FromJson<SaveData>(json);
+
+            playerName = data.saveName;
+            bestScore = data.saveScore;
+        }
     }
 }

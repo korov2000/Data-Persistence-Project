@@ -28,6 +28,14 @@ public class MenuUIHandler : MonoBehaviour
         SceneManager.LoadScene(1);
 
         // kada pokreneš igru zapiši ime igrača u varijablu playerName
-        MenuManager.Instance.playerName = playerNameText.text;
+        if (playerNameText.text == "Enter your name...")
+        {
+            MenuManager.Instance.playerName = "Player";
+        }
+        else
+        {
+            MenuManager.Instance.playerName = playerNameText.text;
+        }
+        
     }
 }
