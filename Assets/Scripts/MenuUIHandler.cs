@@ -37,5 +37,6 @@ public class MenuUIHandler : MonoBehaviour
 
         // kada pokreneš igru zapiši ime igrača u varijablu playerName
         MenuManager.Instance.playerName = playerNameText.text;
+
     }
 }

@@ -64,6 +64,7 @@ public class MenuManager : MonoBehaviour
 
             bestPlayerName = data.saveName;
             bestPlayerScore = data.saveScore;
+
         }
     }
 }

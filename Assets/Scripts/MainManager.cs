@@ -89,6 +89,7 @@ public class MainManager : MonoBehaviour
             MenuManager.Instance.bestPlayerScore = m_Points;
             MenuManager.Instance.bestPlayerName = newPlayerName;
             MenuManager.Instance.Save();
+
         }
     }
 }
