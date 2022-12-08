@@ -10,11 +10,17 @@ using TMPro;
 public class MenuUIHandler : MonoBehaviour
 {
     public TextMeshProUGUI playerNameText;
+    public string bestPlayerNameUI;
+    public int bestPlayerScoreUI;
 
     // Start is called before the first frame update
     void Start()
     {
+        MenuManager.Instance.Load();
+        bestPlayerNameUI = MenuManager.Instance.bestPlayerName;
+        bestPlayerScoreUI = MenuManager.Instance.bestPlayerScore;
 
+        // ovdje treba još napraviti prikazivanje najboljeg playera i score-a
     }
 
     // Update is called once per frame
@@ -27,15 +33,9 @@ public class MenuUIHandler : MonoBehaviour
     {
         SceneManager.LoadScene(1);
 
+        //Debug.Log(Application.persistentDataPath);
+
         // kada pokreneš igru zapiši ime igrača u varijablu playerName
-        if (playerNameText.text == "Enter your name...")
-        {
-            MenuManager.Instance.playerName = "Player";
-        }
-        else
-        {
-            MenuManager.Instance.playerName = playerNameText.text;
-        }
-        
+        MenuManager.Instance.playerName = playerNameText.text;
     }
 }

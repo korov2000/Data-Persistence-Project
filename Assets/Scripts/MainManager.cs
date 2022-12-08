@@ -40,12 +40,12 @@ public class MainManager : MonoBehaviour
         }
 
         newPlayerName = MenuManager.Instance.playerName;
-
+        
         // pozovi funkciju Load() koja će učitati playerName i bestScore
         MenuManager.Instance.Load();
 
         // ispiši playerName i bestScore
-        bestScoreText.text = $"Best Score : {MenuManager.Instance.playerName} : {MenuManager.Instance.bestScore}";
+        bestScoreText.text = $"Best Score : {MenuManager.Instance.bestPlayerName} : {MenuManager.Instance.bestPlayerScore}";
     }
 
     private void Update()
@@ -75,7 +75,7 @@ public class MainManager : MonoBehaviour
     void AddPoint(int point)
     {
         m_Points += point;
-        ScoreText.text = $"Score : {m_Points}";
+        ScoreText.text = $"{newPlayerName} : Score : {m_Points}";
     }
 
     public void GameOver()
@@ -84,10 +84,10 @@ public class MainManager : MonoBehaviour
         GameOverText.SetActive(true);
 
         // ako je sadašnji best score veći od prethodnog pozovi funkciju Save()
-        if (m_Points > MenuManager.Instance.bestScore)
+        if (m_Points > MenuManager.Instance.bestPlayerScore)
         {
-            MenuManager.Instance.bestScore = m_Points;
-            MenuManager.Instance.playerName = newPlayerName;
+            MenuManager.Instance.bestPlayerScore = m_Points;
+            MenuManager.Instance.bestPlayerName = newPlayerName;
             MenuManager.Instance.Save();
         }
     }

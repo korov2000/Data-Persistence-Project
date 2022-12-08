@@ -9,7 +9,9 @@ public class MenuManager : MonoBehaviour
 
     // varijabla za ulovit ime igrača - puni se u MenuUIHandler.cs
     public string playerName;
-    public int bestScore;
+    
+    public string bestPlayerName;
+    public int bestPlayerScore;
 
     private void Awake()
     {
@@ -44,8 +46,8 @@ public class MenuManager : MonoBehaviour
     public void Save()
     {
         SaveData data = new SaveData();
-        data.saveName = playerName;
-        data.saveScore = bestScore;
+        data.saveName = bestPlayerName;
+        data.saveScore = bestPlayerScore;
 
         string json = JsonUtility.ToJson(data);
 
@@ -60,8 +62,8 @@ public class MenuManager : MonoBehaviour
             string json = File.ReadAllText(path);
             SaveData data = JsonUtility.FromJson<SaveData>(json);
 
-            playerName = data.saveName;
-            bestScore = data.saveScore;
+            bestPlayerName = data.saveName;
+            bestPlayerScore = data.saveScore;
         }
     }
 }
