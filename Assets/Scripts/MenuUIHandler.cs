@@ -13,6 +13,8 @@ public class MenuUIHandler : MonoBehaviour
     public string bestPlayerNameUI;
     public int bestPlayerScoreUI;
 
+    public TextMeshProUGUI bestScore;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,7 @@ public class MenuUIHandler : MonoBehaviour
         bestPlayerScoreUI = MenuManager.Instance.bestPlayerScore;
 
         // ovdje treba još napraviti prikazivanje najboljeg playera i score-a
+        bestScore.text = $"Best Score : {bestPlayerNameUI} : {bestPlayerScoreUI}";
     }
 
     // Update is called once per frame
